@@ -8,7 +8,7 @@ php.ini Setting
   - short_open_tag=On
   - upload_max_filesize=200M (As much as you want)
   - error_reporting=E_ALL & ~E_DEPRECATED & ~E_STRICT & ~E_NOTICE & ~E_WARNING
-  
+
   remove the comment on following extentions:
   - extension=gd 
   - extension=zip  
