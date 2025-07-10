@@ -15,8 +15,10 @@
 
 ##  First thing to do is install VWMLDBM:
 ### To install VWMLDBM,
-  1. clone it under the public: eg, "/htdocs/mindbridger-web-admin/"
+  1. Clone it under the public: eg, "/htdocs/mindbridger-web-admin/"
+  2. Rename "/htdocs/mindbridger-web-admin/vwmldbm/dbcon(default).php" as "dbcon.php"
   3. Run the installer: "/htdocs/mindbridger-web-admin/vwmldbm/"
+  4. Finish Code Settings
 
 ### To Reinstall VWMLDBM,
   1. delete "/htdocs/mindbridger-web-admin/vwmldbm/dbcon.php"
