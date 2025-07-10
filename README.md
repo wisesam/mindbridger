@@ -1,8 +1,8 @@
 # Welcome to MindBridger Open Source AI Library System
 ## Environment
-  - Apache Web Server (2.4.*+)
+  - Apache Web Server 2.4.* +
   - MariaDB(MySQL) 10.4.* +
-  - PHP 8.0+
+  - PHP 8.0.2 +
 
 ## php.ini Setting
   - short_open_tag=On
@@ -15,22 +15,22 @@
 
 ##  First thing to do is install VWMLDBM:
 ### To install VWMLDBM,
-  1. Clone it under the public: eg, "/htdocs/mindbridger-web-admin/"
+  1. Clone it under the public: eg, "/htdocs/mindbridger/"
   2. Rename "/htdocs/mindbridger-web-admin/vwmldbm/dbcon(default).php" as "dbcon.php"
-  3. Run the installer: "/htdocs/mindbridger-web-admin/vwmldbm/"
+  3. Run the installer: "/htdocs/mindbridger/vwmldbm/"
   4. Finish Code Settings
 
 ### To Reinstall VWMLDBM,
-  1. delete "/htdocs/mindbridger-web-admin/vwmldbm/dbcon.php"
-  2. rename "/htdocs/mindbridger-web-admin/vwmldbm/dbcon(default).php" as "dbcon.php"
-  3. Run the installer: "/htdocs/host_program/vwmldbm/"
+  1. delete "/htdocs/mindbridger/vwmldbm/dbcon.php"
+  2. rename "/htdocs/mindbridger/vwmldbm/dbcon(default).php" as "dbcon.php"
+  3. Run the installer: "/htdocs/mindbridger/vwmldbm/"
   
   
 ## How to use Multi-lang  
  A. To use multi-lang change list box,
   1. include VWMLDBM "config.php" from the host script. 
-	eg, suppose the host script is "/htdocs/mindbridger-web-admin/customer/index.php"
-		and VWMLDBM path is "/htdocs/mindbridger-web-admin/vwmldbm/".	
+	eg, suppose the host script is "/htdocs/mindbridger/customer/index.php"
+		and VWMLDBM path is "/htdocs/mindbridger/vwmldbm/".	
 		From the host script, " require_once("../vwmldbm/config.php"); "
   
   2. call "\vwmldbm\code\mlang_change_list();"
@@ -41,8 +41,8 @@ B. To use multi-lang field names,
   1. Enter field names using "RMD"
   
   2. include VWMLDBM "config.php" from the host script. 
-	eg, suppose the host script is "/htdocs/mindbridger-web-admin/customer/index.php"
-		and VWMLDBM path is "/htdocs/mindbridger-web-admin/vwmldbm/".	
+	eg, suppose the host script is "/htdocs/mindbridger/customer/index.php"
+		and VWMLDBM path is "/htdocs/mindbridger/vwmldbm/".	
 		From the host script, " require_once("../vwmldbm/config.php"); "
   
   3. call "\vwmldbm\code\get_field_name("table_name_without_prefix","field_name")"
@@ -50,10 +50,10 @@ B. To use multi-lang field names,
 	
 	
 C. To use multi-lang Texts (not field names),
-  1. Modify JSON files: eg, "/htdocs/mindbridger-web-admin/vwmldbm/mlang/30.json" for Korean:
+  1. Modify JSON files: eg, "/htdocs/mindbridger/vwmldbm/mlang/30.json" for Korean:
   2. include VWMLDBM "config.php" from the host script. 
-	eg, suppose the host script is "/htdocs/mindbridger-web-admin/customer/index.php"
-		and VWMLDBM path is "/htdocs/mindbridger-web-admin/vwmldbm/".	
+	eg, suppose the host script is "/htdocs/mindbridger/customer/index.php"
+		and VWMLDBM path is "/htdocs/mindbridger/vwmldbm/".	
 		From the host script, " require_once("../vwmldbm/config.php"); "
   
   3. insert code: "$wmlang[menu][customer_list]"
