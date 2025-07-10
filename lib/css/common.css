@@ -1,0 +1,66 @@
+/* Drag and Drop File Area and Progressive Upload */
+.dnd_file {
+    display: block; 
+    margin: 10px auto; 
+    background: #afa; 
+    border-radius: 10px; 
+    padding: 15px;
+    height:70px;
+}
+
+.progress {
+    display:none; 
+    position:relative; 
+    width:400px; 
+    border: 1px solid #ddd; 
+    padding: 1px; 
+    border-radius: 3px; 
+}
+
+.bar { 
+    background-color: #B4F5B4; 
+    width:0%; 
+    height:20px; 
+    border-radius: 3px; 
+}
+
+.percent  { 
+    position:absolute; 
+    display:inline-block; 
+    top:3px; 
+    left:48%; 
+}
+
+.wlibrary_icon {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    opacity: 0.5;
+    transition: 0.3s ease;
+    cursor: pointer;
+	font-weight:bold;
+	//z-index:'-10';
+}
+
+.wlibrary_icon:hover {
+	transform: scale(1.2, 1.2);
+    //opacity: 1;
+	z-index:'-10';
+}
+
+.wlibrary_btn {
+    width: 24px;
+    height: 24px;
+    position: relative;
+    opacity: 0.5;
+    transition: 0.3s ease;
+    cursor: pointer;
+	font-weight:bold;
+	border:none;
+	background-color: #EEE;
+}
+.wlibrary_btn:hover {
+	transform: scale(1.2, 1.2);
+    opacity: 1;
+	z-index:'-10';
+}
