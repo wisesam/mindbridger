@@ -1,4 +1,4 @@
-Thank you for using MindBridger Open Source AI Library 
+** Thank you for using MindBridger Open Source AI Library 
 Environment
   - Apache Web Server (2.4.*+)
   - MariaDB(MySQL) 10.4.* +
