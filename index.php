@@ -38,7 +38,7 @@ define('LARAVEL_START', microtime(true));
 |
 */
 
-require __DIR__.'/../../../wlibrary/vendor/autoload.php';
+require __DIR__.'/../../mindbridger-main/vendor/autoload.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ require __DIR__.'/../../../wlibrary/vendor/autoload.php';
 |
 */
 
-$app = require_once __DIR__.'/../../../wlibrary/bootstrap/app.php';
+$app = require_once __DIR__.'/../../mindbridger-main/bootstrap/app.php';
 
 /*
 |--------------------------------------------------------------------------
