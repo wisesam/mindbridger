@@ -17,13 +17,13 @@
 ### To install VWMLDBM,
   1. Clone it under the public: eg, "/htdocs/mindbridger/"
   2. Rename "/htdocs/mindbridger/vwmldbm/dbcon(default).php" as "dbcon.php"
-  3. Run the installer: "/htdocs/mindbridger/vwmldbm/"
+  3. Run the installer: "http://localhost/mindbridger/vwmldbm/"
   4. Finish Code Settings
 
 ### To Reinstall VWMLDBM,
   1. delete "/htdocs/mindbridger/vwmldbm/dbcon.php"
   2. rename "/htdocs/mindbridger/vwmldbm/dbcon(default).php" as "dbcon.php"
-  3. Run the installer: "/htdocs/mindbridger/vwmldbm/"
+  3. Run the installer: "http://localhost/mindbridger/vwmldbm/"
   
   
 ## How to use Multi-lang  
