@@ -35,9 +35,11 @@ $VWMLDBM['DB_pwd']=null; // for security
 // multi-language(JSON): menus, texts, javascript, buttons.
 
 if(file_exists($VWMLDBM['VWMLDBM_RT']."/mlang/10.json")==false) return; // no json files
+
 $_GET['vwmldbm_lang'] = $_GET['vwmldbm_lang'] ?? null;
-if($_GET['vwmldbm_lang']) $_SESSION['vwmldbm_lang']=$_GET['vwmldbm_lang'];
-else if(!$_SESSION['vwmldbm_lang']) $_SESSION['vwmldbm_lang']=10; // default is English
+$_SESSION['vwmldbm_lang'] = $_SESSION['vwmldbm_lang'] ?? 10;
+
+if($_GET['vwmldbm_lang']) $_SESSION['vwmldbm_lang'] = $_GET['vwmldbm_lang'];
 $lang=$_SESSION['vwmldbm_lang'];
 
 if(file_exists($VWMLDBM['VWMLDBM_RT']."/mlang/".$lang.".json"))
