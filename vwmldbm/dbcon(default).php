@@ -18,6 +18,9 @@ $VWMLDBM['DB_pwd']="_INSTALL_DB_pwd"; // to be updated by setup
 $VWMLDBM['VWMLDBM_RT']="_INSTALL_VWMLDBM_RT"; // to be updated by setup
 $VWMLDBM['VWMLDBM_WWW_RT']="_INSTALL_VWMLDBM_WWW_RT"; // to be updated by setup
 $VWMLDBM['MULTI_INST'] = false; 
+$VWMLDBM['USER_TB']='users'; // the application's user table
+$VWMLDBM['BOOK_TB']='book'; // the application's book table
+$VWMLDBM['MAX_BOOK_DOWNLOAD']=5; // Max number of books to download at once
 
 $GLOBALS['VWMLDBM']=$VWMLDBM;
 $GLOBALS['DB']=$VWMLDBM['DB'];
