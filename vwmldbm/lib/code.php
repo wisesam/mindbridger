@@ -64,7 +64,7 @@ function print_code($code_name,$code=null,$form_name=null,$field_name=null,$use_
 	}
 	
 	if($res_c) $rs_c = mysqli_fetch_array($res_c);
-	if($rs_c[$field_name]==null || $rs_c[$field_name]=="") $field_name="name"; // not available, so make it default
+	if(!isset($rs_c[$field_name]) || $rs_c[$field_name]=="") $field_name="name"; // not available, so make it default
 	
 	$except=null;
 	if($except_code) $except=" and code NOT in($except_code) "; // except this code, eg, display lan list except the default one (English)
