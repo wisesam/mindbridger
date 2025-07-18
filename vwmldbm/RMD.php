@@ -14,7 +14,8 @@ require_once("lib/code.php"); //Show VWMLDBM Tables
 
 set_time_limit(180); //  set the execution time limit in seconds
 
-if(!$_SESSION['lib_inst'] || $_SESSION['wlibrary_admin']!='A' || $_SESSION['lib_inst']!=1) die;
+$_SESSION['wlibrary_admin'] = $_SESSION['wlibrary_admin'] ?? null; // TBD
+if(!$_SESSION['lib_inst'] || !$_SESSION['wlibrary_admin']) die;
 $inst_no=$_SESSION['lib_inst'];
 
 ?>

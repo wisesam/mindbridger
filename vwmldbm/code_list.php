@@ -11,7 +11,9 @@ require_once("config.php");
 require_once("dbcon.php");
 require_once("lib/code.php");
 
-if(!$_SESSION['lib_inst'] || $_SESSION['wlibrary_admin']!='A') die;
+$_SESSION['wlibrary_admin'] = $_SESSION['wlibrary_admin'] ?? null; // TBD
+if(!$_SESSION['lib_inst'] || !$_SESSION['wlibrary_admin']) die;
+$inst_no=$_SESSION['lib_inst'];
 
 // Permission Control TBM
 $perm['R']='Y';
