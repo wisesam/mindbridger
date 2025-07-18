@@ -18,7 +18,7 @@ else {
 	}
 }
 set_time_limit(180); //  set the execution time limit in seconds
-$_SESSION['wlibrary_admin'] = $_SESSION['wlibrary_admin'] ?? 'A'; // TBD
+$_SESSION['wlibrary_admin'] = $_SESSION['wlibrary_admin'] ?? null; // TBD
 if(!$_SESSION['lib_inst'] || $_SESSION['wlibrary_admin']!='A') die;
 
 ?>

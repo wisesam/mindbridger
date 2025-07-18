@@ -33,6 +33,7 @@ Classes:
 	class Inst_var
   ============================================================*/
 namespace vwmldbm\code;
+$_SESSION['lib_inst'] = $_SESSION['lib_inst'] ?? 1;
 
 function print_code($code_name,$code=null,$form_name=null,$field_name=null,$use_yn=true,$except_code=null,$opt=null,$all_lang=null,$fevent=null,$extra_sql=null) {
  // $all_lang='ALL_LANG' when to show all codes

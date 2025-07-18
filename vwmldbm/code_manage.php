@@ -443,6 +443,7 @@ function check_n_create_lang_code($code_name,$c_lang_arr) {
 			$sql="select * from {$DTB_PRE}_{$code_name} where inst='$inst' and code='$c' and c_lang='$ln'";
 			$res2=mysqli_query($conn,$sql);
 			if($res2) $rs2=mysqli_fetch_array($res2);
+			if($code_name== "code_c_category") continue; // [TBM] pass the complex code 
 			if(!$rs2['code']) { // not exist, so add one				
 				$sql="insert into $DTB_PRE"."_$code_name (inst,code,c_lang,name,use_yn) 
 					values('$inst','$c','$ln','{$val['name']}','{$val['use_yn']}')";
