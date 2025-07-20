@@ -99,9 +99,9 @@ class BatchData {
 	
 	public function save_excel($fname){
 		global $VWMLDBM;
-		if(!$VWMLDBM['VWMLDBM_UPLOAD_PATH']) return; // illegal operation
+		if(empty($VWMLDBM['VWMLDBM_BATCH_UPLOAD'])) return; // illegal operation
 		
-		$this->writer->save($VWMLDBM['VWMLDBM_UPLOAD_PATH']."/batch/data/".$fname);
+		$this->writer->save($VWMLDBM['VWMLDBM_BATCH_UPLOAD']."/".$fname);
 	}
 }
 

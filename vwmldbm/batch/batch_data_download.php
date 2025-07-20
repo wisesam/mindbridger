@@ -17,9 +17,10 @@ use PhpOffice\PhpSpreadsheet\Style\Color;
 use PhpOffice\PhpSpreadsheet\Style\Fill;
 require $VWMLDBM['VWMLDBM_RT'].'/lib/lib_batch_data.php';
 require $VWMLDBM['VWMLDBM_RT'].'/lib/code.php';
+require $VWMLDBM['VWMLDBM_RT'].'/lib/system.php';
 require $VWMLDBM['VWMLDBM_RT'].'/lib/img.php';
 
-if(!$_SESSION['lib_inst'] || $_SESSION['wlibrary_admin']!='A') die;
+if(!system\isAdmin()) die("You are not authorized to access this page.");
 
 $target=$_GET['target'];
 

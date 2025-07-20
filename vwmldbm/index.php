@@ -9,6 +9,7 @@ session_start();
 require_once("config.php");
 require_once("lib/sysmon.php"); // system monitor
 require_once("lib/code.php"); 
+require_once("lib/system.php"); // auth 
 
 if(!$conn) header("Location:install/");
 else {
@@ -19,8 +20,7 @@ else {
 }
 set_time_limit(180); //  set the execution time limit in seconds
 
-$_SESSION['wlibrary_admin'] = $_SESSION['wlibrary_admin'] ?? null; // TBD
-if(!$_SESSION['lib_inst'] || !$_SESSION['wlibrary_admin']) die;
+if(!system\isAdmin()) die("You are not authorized to access this page.");
 
 ?>
 <html>

@@ -10,16 +10,17 @@ namespace vwmldbm;
 require_once("config.php");
 require_once("dbcon.php");
 require_once("lib/code.php");
+require_once("lib/system.php"); 
 
-$_SESSION['wlibrary_admin'] = $_SESSION['wlibrary_admin'] ?? null; // TBD
-if(!$_SESSION['lib_inst'] || !$_SESSION['wlibrary_admin']) die;
-$inst_no=$_SESSION['lib_inst'];
-
+if(!system\isAdmin()) die("You are not authorized to access this page.");
 // Permission Control TBM
 $perm['R']='Y';
 $perm['A']='Y';
 $perm['M']='Y';
 $perm['D']='Y';
+
+$inst_no=$_SESSION['lib_inst'];
+
 
 $codes=array(		
 	"Language"=>array("vwmldbm_c_lang","name","TBS"),

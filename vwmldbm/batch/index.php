@@ -6,9 +6,7 @@
  =================================================*VWMLDBM DISCLAIMER*/
 namespace vwmldbm;
 session_start();
-set_time_limit(180); //  set the execution time limit in seconds
-
-// error_reporting(E_ALL);
+set_time_limit(180); //  set the execution time limit in seconds;// error_reporting(E_ALL);
 // ini_set('display_errors', 1);
 
 require_once("../config.php");
@@ -21,15 +19,16 @@ use PhpOffice\PhpSpreadsheet\Style\Fill;
 require_once $VWMLDBM['VWMLDBM_RT'].'/lib/lib_batch_data.php';
 
 require $VWMLDBM['VWMLDBM_RT'].'/lib/code.php';
+require $VWMLDBM['VWMLDBM_RT'].'/lib/system.php';
 require $VWMLDBM['VWMLDBM_RT'].'/lib/file.php';
 require $VWMLDBM['VWMLDBM_RT'].'/lib/img.php';
 require $VWMLDBM['VWMLDBM_RT'].'../../lib/ebook.php';
 
-if(!$_SESSION['lib_inst'] || $_SESSION['wlibrary_admin']!='A') die;
+if(!system\isAdmin()) die;
 
 // Check if the batch directory exists
-if(!file_exists($VWMLDBM['VWMLDBM_UPLOAD_PATH']."/app/batch/".$_SESSION['lib_inst'])){
-	mkdir($VWMLDBM['VWMLDBM_UPLOAD_PATH']."/app/batch/".$_SESSION['lib_inst']);
+if(!file_exists($VWMLDBM['VWMLDBM_BATCH_UPLOAD']."/".$_SESSION['lib_inst'])){
+	mkdir($VWMLDBM['VWMLDBM_BATCH_UPLOAD']."/".$_SESSION['lib_inst']);
 }
 
 // File Size
@@ -136,7 +135,7 @@ $perm['A']='Y'; // TBD
 				$destname = $_FILES['upload']['name'];
 				
 			  // this is a temporary file name	
-				$filePath = $VWMLDBM['VWMLDBM_UPLOAD_PATH']."/app/batch/{$_SESSION['lib_inst']}/".$destname; 
+				$filePath = $VWMLDBM['VWMLDBM_BATCH_UPLOAD']."/{$_SESSION['lib_inst']}/".$destname; 
 
 				//Upload the file into the temp dir
 				if(move_uploaded_file($tmpFilePath, $filePath)) {
@@ -150,10 +149,10 @@ $perm['A']='Y'; // TBD
 				if($check_arr['worksheet'] && $check_arr['data']){
 			  // new file name		
 					$newFname=$check_arr['target'].date('Ymd').img\genRandStr(20).".xlsx";
-					$newFilePath = $VWMLDBM['VWMLDBM_UPLOAD_PATH']."/app/batch/{$_SESSION['lib_inst']}/".$newFname;
+					$newFilePath = $VWMLDBM['VWMLDBM_BATCH_UPLOAD']."/{$_SESSION['lib_inst']}/".$newFname;
 					if(rename($filePath,$newFilePath)){ // rename the file name
 					  // remove all old files
-						$dir = $VWMLDBM['VWMLDBM_UPLOAD_PATH']."/app/batch/{$_SESSION['lib_inst']}/"; // directory name to be read
+						$dir = $VWMLDBM['VWMLDBM_BATCH_UPLOAD']."/{$_SESSION['lib_inst']}/"; // directory name to be read
 						if($dir)$ar=scandir($dir); 
 						if ($ar) {
 							foreach ($ar as $key => $val) {
@@ -198,7 +197,7 @@ $perm['A']='Y'; // TBD
 	}
 	else if($_POST['operation']=='EXECUTE' && $_POST['target']){
 	  // 1. get the uploaded file name
-		$dir = $VWMLDBM['VWMLDBM_UPLOAD_PATH']."/app/batch/{$_SESSION['lib_inst']}/"; // directory name to be read
+		$dir = $VWMLDBM['VWMLDBM_BATCH_UPLOAD']."/{$_SESSION['lib_inst']}/"; // directory name to be read
 		if($dir)$ar=scandir($dir);
 		if ($ar) {
 			foreach ($ar as $key => $val) {
