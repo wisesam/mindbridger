@@ -64,7 +64,6 @@ See https://github.com/adobe-type-tools/cmap-resources
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>PDF.js viewer</title>
 
-
     <link rel="stylesheet" href="viewer.css">
 	
 	<?PHP
@@ -146,12 +145,14 @@ See https://github.com/adobe-type-tools/cmap-resources
 ?>
   <script>
   $(document).ready(function() {
+    let start = 10;
+    let end = 12;
+    PDFViewerApplication.initialBookmark = `page=${start}&range=${start}-${end}`;
 	  PDFViewerApplication.open("<?=$pdfurl?>"); // specify the file
+
   });
   </script>
-  
   </head>
-
   <body tabindex="1" class="loadingInProgress">
     <div id="outerContainer">
       <div id="sidebarContainer">

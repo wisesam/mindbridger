@@ -40,7 +40,7 @@ $rfilepath="$fdir/$rfname";
 output_file($rfilepath,$fname);
 
 //https://gist.github.com/drewwalton19216801/5997118
-function output_file($file, $name, $mime_type=''){
+function output_file($file, $name, $mime_type='') {
     if(!is_readable($file)) die('File not found or inaccessible!');
     $size = filesize($file);
     $name = rawurldecode($name);
