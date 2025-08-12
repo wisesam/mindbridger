@@ -10,10 +10,11 @@ System environmental variables
 namespace vwmldbm;
 if(!isset($_SESSION)) session_start(); 
 
-require_once("dbcon.php"); 
-// require_once("lib/code.php"); 
+$installMode=true; // true: install mode, false: normal mode. Change this to false when you finish the installation (For security reason) [TBD]
 
+require_once("dbcon.php"); 
 if(!isset($conn)) return;
+
 $_SESSION['lib_inst'] = $_SESSION['lib_inst'] ?? 1; // [TBD]
 $inst=$_SESSION['lib_inst'];
 

@@ -15,7 +15,7 @@ require_once("lib/system.php"); //auth
 
 set_time_limit(180); //  set the execution time limit in seconds
 
-if(!system\isAdmin()) die("You are not authorized to access this page.");
+if(!$installMode && !system\isAdmin()) die("Try this again after login as an admin.");
 $inst_no=$_SESSION['lib_inst'];
 
 ?>

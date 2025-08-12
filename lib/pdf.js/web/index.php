@@ -147,7 +147,7 @@ See https://github.com/adobe-type-tools/cmap-resources
   $(document).ready(function() {
     let start = 10;
     let end = 12;
-    PDFViewerApplication.initialBookmark = `page=${start}&range=${start}-${end}`;
+    // PDFViewerApplication.initialBookmark = `page=${start}&range=${start}-${end}`;
 	  PDFViewerApplication.open("<?=$pdfurl?>"); // specify the file
 
   });
@@ -502,4 +502,3 @@ See https://github.com/adobe-type-tools/cmap-resources
     <div id="printContainer"></div>
   </body>
 </html>
-
