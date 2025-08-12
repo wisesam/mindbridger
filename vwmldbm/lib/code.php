@@ -61,7 +61,7 @@ function print_code($code_name,$code=null,$form_name=null,$field_name=null,$use_
 	try {
 		$res_c = mysqli_query($conn,$sql);
 	} catch(\mysqli_sql_exception $e) {
-		die($e);
+		print "<font color=red>Error: $e</font>";
 	}
 	
 	if($res_c) $rs_c = mysqli_fetch_array($res_c);

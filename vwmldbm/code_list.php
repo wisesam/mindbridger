@@ -106,12 +106,7 @@ foreach($codes as $key => $value){  // in-DB system codes
 		else echo "$key</td>";
 		
 		echo "<td>";
-			try {
-				echo code\print_code($value[0],null,null,$value[1],null,null,null,'ALL_LANG');
-			} catch(Exception $e) {
-				echo "<font color=red>Error: ".$e->getMessage()."</font>";
-			}
-			
+			echo code\print_code($value[0],null,null,$value[1],null,null,null,'ALL_LANG');
 		echo "</td>";
 		
 		echo "<td align=center>";
