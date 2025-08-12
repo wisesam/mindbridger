@@ -12,7 +12,7 @@ require_once("dbcon.php");
 require_once("lib/code.php");
 require_once("lib/system.php"); 
 
-if(!$installMode && !system\isAdmin()) die("Try this again after login as an admin.");
+if(!system\isAdmin()) die("Try this again after login as an admin.");
 // Permission Control TBM
 $perm['R']='Y';
 $perm['A']='Y';
