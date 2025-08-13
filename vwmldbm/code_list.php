@@ -97,6 +97,7 @@ $codes=array(
 <?PHP
 $cnt=0;
 foreach($codes as $key => $value){  // in-DB system codes
+	if($installMode && ($value[0]=='code_c_utype')) continue; // skip User Type code in install mode [TBM]
 	echo "<tr>";
 		echo "<td>";
 		if($value[2]=='TBS') // To be setup
