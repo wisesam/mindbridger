@@ -57,7 +57,12 @@ $rfiles=null; // random file names w/o extension to be stored in 'pi_cms_item' t
 $fdir=$_SESSION['app.root']."/storage/app/ebook/{$_SESSION['lib_inst']}/$rid";
 // Check if the directory exists with the rid
 if(!file_exists($fdir)){
-	mkdir($fdir);
+	try {
+		mkdir($fdir);
+	} catch (Exception $e) {
+		echo "Failed to create directory: $fdir. Error: " . $e->getMessage();
+		$file_ok=false;
+	}
 }
 
 $wasMod=false;	
