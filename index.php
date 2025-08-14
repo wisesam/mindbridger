@@ -38,7 +38,12 @@ define('LARAVEL_START', microtime(true));
 |
 */
 
-require __DIR__.'/../../../mindbridger-main/vendor/autoload.php';
+try{
+	require __DIR__.'/../../mindbridger-main/vendor/autoload.php';
+} catch (Exception $e) {
+	// Handle the exception if the autoload file is not found
+	require __DIR__.'/../../../mindbridger-main/vendor/autoload.php';
+}
 
 /*
 |--------------------------------------------------------------------------
@@ -52,7 +57,13 @@ require __DIR__.'/../../../mindbridger-main/vendor/autoload.php';
 |
 */
 
-$app = require_once __DIR__.'/../../../mindbridger-main/bootstrap/app.php';
+$app = null; 
+try{
+	require __DIR__.'/../../mindbridger-main/bootstrap/app.php';
+} catch (Exception $e) {
+	// Handle the exception if the autoload file is not found
+	require __DIR__.'/../../../mindbridger-main/bootstrap/app.php';
+}
 
 /*
 |--------------------------------------------------------------------------
