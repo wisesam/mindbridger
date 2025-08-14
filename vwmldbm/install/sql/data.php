@@ -5,8 +5,8 @@
  Released under the MIT license
  =================================================*VWMLDBM DISCLAIMER*/
 $data_sql['vwmldbm_inst']="
-	INSERT INTO $DTB_PRE"."_vwmldbm_inst(no) 
-		VALUES (1)
+	INSERT INTO $DTB_PRE"."_vwmldbm_inst(no,inst_uname) 
+		VALUES (1,'mindbridger');
 ";
 
 $data_sql['vwmldbm_c_lang']="
