@@ -169,15 +169,24 @@ function insert_fields($db_name,$tb_name,$option=null,$inst=null) { // called by
 	// insert the fields of the table into wise2.wise2_vwmldbm_fd
 	global $conn,$DB,$DTB_PRE,$TB_PRE;
 	if(!$inst) $inst=$_SESSION['lib_inst'];
-	$sql="select column_name, data_type,CHARACTER_MAXIMUM_LENGTH from information_schema.columns where table_schema='$db_name' and table_name='$tb_name'";
+	$sql="select column_name, data_type, CHARACTER_MAXIMUM_LENGTH from information_schema.columns where table_schema='$db_name' and table_name='$tb_name'";
 	$res=mysqli_query($conn,$sql);
 	if($res) while($rs=mysqli_fetch_array($res)){
+		$sql="select count(no) as num from $DTB_PRE"."_vwmldbm_fd where db_name='$db_name' and tb_name='$tb_name' and field='".$rs['column_name']."'";
 		$res_a=mysqli_query($conn,"select count(no) as num from $DTB_PRE"."_vwmldbm_fd where db_name='$db_name' and tb_name='$tb_name' and field='".$rs['column_name']."'");
 		if($res_a) $rs_a=mysqli_fetch_array($res_a);
-		if($rs['CHARACTER_MAXIMUM_LENGTH']=='') $rs['CHARACTER_MAXIMUM_LENGTH']=0;
+		if(empty($rs['CHARACTER_MAXIMUM_LENGTH'])) $rs['CHARACTER_MAXIMUM_LENGTH']=0;
+		$rs['CHARACTER_MAXIMUM_LENGTH'] = ($rs['CHARACTER_MAXIMUM_LENGTH'] > 2147483647 ? 2147483647 : $rs['CHARACTER_MAXIMUM_LENGTH']); // 32bit safe range
+
 		if($rs_a['num']==0) {
-			mysqli_query($conn,"insert into $DTB_PRE"."_vwmldbm_fd (db_name,tb_name,field,type,max_len) values('$db_name','$tb_name','".$rs['column_name']."','".$rs['data_type']."',".$rs['CHARACTER_MAXIMUM_LENGTH'].")");	
-			if($option!='SILENT')echo"$db_name.$tb_name.".$rs['column_name']." was added.<br>";
+			try {
+				$sqli="insert into $DTB_PRE"."_vwmldbm_fd (db_name,tb_name,field,type,max_len) values('$db_name','$tb_name','".$rs['column_name']."','".$rs['data_type']."',".$rs['CHARACTER_MAXIMUM_LENGTH'].")";	
+				mysqli_query($conn,$sqli);	
+				if($option!='SILENT')echo"$db_name.$tb_name.".$rs['column_name']." was added.<br>";
+			} catch(\mysqli_sql_exception $e) {
+				print "<font color=red>Error: $e</font>";
+				echo $sqli;
+			}
 		}
 	}
 }
