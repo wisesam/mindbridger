@@ -59,7 +59,7 @@ $fdir=$_SESSION['app.root']."/storage/app/ebook/{$_SESSION['lib_inst']}/$rid";
 if(!file_exists($fdir)){
 	try {
 		mkdir($fdir);
-	} catch (Exception $e) {
+	} catch (Throwable $e) {
 		echo "Failed to create directory: $fdir. Error: " . $e->getMessage();
 		$file_ok=false;
 	}
