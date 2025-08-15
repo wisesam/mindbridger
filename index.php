@@ -40,7 +40,7 @@ define('LARAVEL_START', microtime(true));
 
 try{
 	require __DIR__.'/../../mindbridger-main/vendor/autoload.php';
-} catch (Exception $e) {
+} catch (Throwable $e) {
 	// Handle the exception if the autoload file is not found
 	require __DIR__.'/../../../mindbridger-main/vendor/autoload.php';
 }
@@ -60,10 +60,11 @@ try{
 $app = null; 
 try{
 	require __DIR__.'/../../mindbridger-main/bootstrap/app.php';
-} catch (Exception $e) {
+} catch (Throwable $e) {
 	// Handle the exception if the autoload file is not found
 	require __DIR__.'/../../../mindbridger-main/bootstrap/app.php';
 }
+
 
 /*
 |--------------------------------------------------------------------------
