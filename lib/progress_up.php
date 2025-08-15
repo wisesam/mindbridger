@@ -54,11 +54,22 @@ $file_ok=true;
 $files=null; // file names to be stored in 'pi_cms_item' table
 $rfiles=null; // random file names w/o extension to be stored in 'pi_cms_item' table
 
+$fdir_ebook= $_SESSION['app.root']."/storage/app/ebook";
+
+if (!file_exists($fdir_ebook)) {
+    if (!mkdir($fdir_ebook, 0775, true)) {
+        echo "<P style='color:red'>Failed to create directory: $fdir_ebook </p>";
+    } else {
+		echo "<P style='color:green'>Directory created successfully: $fdir_ebook </p>";
+	}
+}
+
+
 $fdir=$_SESSION['app.root']."/storage/app/ebook/{$_SESSION['lib_inst']}/$rid";
 // Check if the directory exists with the rid
 if (!file_exists($fdir)) {
     if (!mkdir($fdir, 0775, true)) {
-        echo "Failed to create directory: $fdir";
+        echo "<p style='color:red'>Failed to create directory: $fdir </p>";
         $file_ok = false;
     }
 }

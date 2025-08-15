@@ -26,9 +26,23 @@ require $VWMLDBM['VWMLDBM_RT'].'../../lib/ebook.php';
 
 if(!system\isAdmin()) die;
 
+$fdir= $VWMLDBM['VWMLDBM_BATCH_UPLOAD'];
+if (!file_exists($fdir)) {
+    if (!mkdir($fdir, 0775, true)) {
+        echo "<P style='color:red'>Failed to create directory: $fdir </p>";
+    } else {
+		echo "<P style='color:green'>Directory created successfully: $fdir </p>";
+	}
+}
+
 // Check if the batch directory exists
-if(!file_exists($VWMLDBM['VWMLDBM_BATCH_UPLOAD']."/".$_SESSION['lib_inst'])){
-	mkdir($VWMLDBM['VWMLDBM_BATCH_UPLOAD']."/".$_SESSION['lib_inst']);
+$fdir_batch= $VWMLDBM['VWMLDBM_BATCH_UPLOAD']."/".$_SESSION['lib_inst'];
+if (!file_exists($fdir_batch)) {
+    if (!mkdir($fdir_batch, 0775, true)) {
+        echo "<P style='color:red'>Failed to create directory: $fdir_batch </p>";
+    } else {
+		echo "<P style='color:green'>Directory created successfully: $fdir_batch </p>";
+	}
 }
 
 // File Size
@@ -105,7 +119,6 @@ $perm['A']='Y'; // TBD
   <div style="width:'98%';text-align:center;">
 <?PHP
 	if($_POST['operation']=='upload'){
-		
 		$file_ok=true;
 		
 		$check_arr=array();
