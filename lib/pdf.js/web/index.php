@@ -16,22 +16,24 @@ session_start();
 if(!$_SESSION['lib_inst'] || !$_SESSION['app.root']) { // illegal access
 	session_destroy(); die("<center>Please log in</center>");
 }
-//if($_SERVER["HTTP_REFERER"]=="") {session_destroy(); die;} // illegal access
 
 require_once($_SESSION['app.root']."/app/Libraries/code.php");
 require_once($_SESSION['app.root']."/app/Libraries/book.php");
 require_once($_SESSION['app.root2']."/vwmldbm/dbcon.php");
 
-$rid=$_REQUEST['rid']; 
-$rfname=$_REQUEST['rf']; // rfile
+$rid = $_REQUEST['rid'] ?? null; // book rid
+$rfname = $_REQUEST['rf'] ?? null; // rfile
+$start = $_REQUEST['start'] ?? 0; // page
+$end = $_REQUEST['end'] ?? 0; // page
 
 $RD_ONLY=false;
 if($rid && $rfname){ 
 	$book=new book\Book(null,$rid); 
 	$perm['R']='N';
 	if($book->rdonly_pdf_yn=='Y') $RD_ONLY=true; 
-	$pdfurl=$_SESSION['app.url']."/lib/get_book_file.php?rf=$rfname&rid=$rid";
+	$pdfurl=$_SESSION['app.url']."/lib/get_book_file.php?rf=$rfname&rid=$rid&start=$start&end=$end";
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -145,9 +147,10 @@ See https://github.com/adobe-type-tools/cmap-resources
 ?>
   <script>
   $(document).ready(function() {
-    let start = 10;
-    let end = 12;
-    // PDFViewerApplication.initialBookmark = `page=${start}&range=${start}-${end}`;
+    let start = <?=$start?>;
+    let end = <?=($end)?>;
+    console.log("Start page: " + start + ", End page: " + end);
+    PDFViewerApplication.initialBookmark = `page=${start}&range=${start}-${end}`;
 	  PDFViewerApplication.open("<?=$pdfurl?>"); // specify the file
 
   });

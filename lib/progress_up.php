@@ -64,7 +64,6 @@ if (!file_exists($fdir_ebook)) {
 	}
 }
 
-
 $fdir=$_SESSION['app.root']."/storage/app/ebook/{$_SESSION['lib_inst']}/$rid";
 // Check if the directory exists with the rid
 if (!file_exists($fdir)) {
@@ -73,7 +72,6 @@ if (!file_exists($fdir)) {
         $file_ok = false;
     }
 }
-
 
 $wasMod=false;	
 if($_FILES['openFile']['name'][0]) {	
