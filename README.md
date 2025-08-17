@@ -25,7 +25,11 @@
   1. delete "/htdocs/mindbridger/vwmldbm/dbcon.php"
   2. rename "/htdocs/mindbridger/vwmldbm/dbcon(default).php" as "dbcon.php"
   3. Run the installer: "http://localhost/mindbridger/vwmldbm/"
-  
+     
+### RESTful API endpoints Setup
+   - if the RESTful routing is not working (eg, http://localhost/mindbridger/login => Not Found ),
+     - check(add) VirtualHost setting (eg, /etc/httpd/httpd.conf)
+     - check .htaccess (in both mindbridger/ and mindbridger-main/public)  
   
 ## How to use Multi-lang  
  A. To use multi-lang change list box,
