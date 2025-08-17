@@ -9,8 +9,9 @@ namespace vwmldbm;
 require_once("config.php");
 require_once("dbcon.php");
 require_once("lib/code.php");
+require_once("lib/system.php");
 
-if(!system\isAdmin()) die("Try this again after login as an admin.");
+if(!\vwmldbm\system\isAdmin()) die("Try this again after login as an admin.");
 $inst_no=$_SESSION['lib_inst'];
 // Permission Control TBM
 $perm['R']='Y';
