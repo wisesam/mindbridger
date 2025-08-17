@@ -17,14 +17,19 @@
 ### To install VWMLDBM,
   1. Clone it under the public: eg, "/htdocs/mindbridger/"
   2. Rename "/htdocs/mindbridger/vwmldbm/dbcon(default).php" as "dbcon.php"
-  3. Run the installer: "http://localhost/mindbridger/vwmldbm/"
-  4. Finish Code Settings
+  3. Rename "/htdocs/mindbridger/vwmldbm/config(default).php" as "config.php"
+  4. Run the installer: "http://localhost/mindbridger/vwmldbm/"
+  5. Finish Code Settings
 
 ### To Reinstall VWMLDBM,
   1. delete "/htdocs/mindbridger/vwmldbm/dbcon.php"
   2. rename "/htdocs/mindbridger/vwmldbm/dbcon(default).php" as "dbcon.php"
   3. Run the installer: "http://localhost/mindbridger/vwmldbm/"
-  
+     
+### RESTful API endpoints Setup
+   - if the RESTful routing is not working (eg, http://localhost/mindbridger/login => Not Found ),
+     - check(add) VirtualHost setting (eg, /etc/httpd/httpd.conf)
+     - check .htaccess (in both mindbridger/ and mindbridger-main/public)  
   
 ## How to use Multi-lang  
  A. To use multi-lang change list box,
