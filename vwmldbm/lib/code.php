@@ -33,6 +33,7 @@ Classes:
 	class Inst_var
   ============================================================*/
 namespace vwmldbm\code;
+if(!isset($_SESSION)) session_start(); 
 $_SESSION['lib_inst'] = $_SESSION['lib_inst'] ?? 1;
 
 function print_code($code_name,$code=null,$form_name=null,$field_name=null,$use_yn=true,$except_code=null,$opt=null,$all_lang=null,$fevent=null,$extra_sql=null) {
@@ -40,7 +41,7 @@ function print_code($code_name,$code=null,$form_name=null,$field_name=null,$use_
  
 	global $conn,$DTB_PRE,$VWMLDBM,$wmlang;
 
-	$lang=$_SESSION['vwmldbm_lang'];	
+	$lang = (!empty($_SESSION['vwmldbm_lang'])  ? $_SESSION['vwmldbm_lang'] : 10);	
 	if(!$conn || !$DTB_PRE || !$lang) return; // illegal access
 	
 	$inst=$_SESSION['lib_inst'];
