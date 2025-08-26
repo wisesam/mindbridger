@@ -29,15 +29,17 @@ require_once("../../../vwmldbm/dbcon.php");
 // Find the position of "\storage\app\batch"
 
 $MODE = "UNIX"; // UNIX: default, WINDOWS: for Windows 
-if (strpos($VWMLDBM['VWMLDBM_BATCH_UPLOAD'], '\\') !== false) {
+if (strpos($VWMLDBM['VWMLDBM_RT'], '\\') !== false) {
   $MODE = "WINDOWS";
 } 
+
 
 $pos = strpos($VWMLDBM['VWMLDBM_BATCH_UPLOAD'], "/storage/app/batch"); // default
 if($MODE == "WINDOWS") {
   $pos = strpos($VWMLDBM['VWMLDBM_BATCH_UPLOAD'], "\\storage\\app\\batch");
 }
-
+echo $VWMLDBM['VWMLDBM_BATCH_UPLOAD'];
+echo $pos;
 $APP_ROOT = "";
 if ($pos !== false) {
     $APP_ROOT = substr($VWMLDBM['VWMLDBM_BATCH_UPLOAD'], 0, $pos);
