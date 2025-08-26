@@ -25,7 +25,7 @@ use setasign\Fpdi\Fpdi;
 ob_start();
 ob_end_clean();
 
-$inst   = $_SESSION['lib_inst'];
+$inst   = $_SESSION['lib_inst'] ?? 1;
 $rid    = $_REQUEST['rid']  ?? null;   // book rid
 $rfname = $_REQUEST['rf']   ?? null;   // rfile
 $page   = $_REQUEST['page'] ?? null;   // legacy single page (optional)
@@ -36,6 +36,7 @@ $end    = isset($_REQUEST['end'])   ? (int)$_REQUEST['end']   : $start;
 
 // Resolve file path
 $book   = new book\Book(null, $rid);
+
 $fname  = $book->get_file_name($rfname);
 $fdir   = $_SESSION['app.root']."/storage/app/ebook/{$_SESSION['lib_inst']}/$rid";
 $rfilepath = "$fdir/$rfname";
