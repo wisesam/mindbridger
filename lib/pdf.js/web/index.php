@@ -27,7 +27,17 @@ require_once("../../../vwmldbm/dbcon.php");
 // to get mindbridger-main's root. eg, /var/www/mindbridger-main or C:\xampp\mindbridger-main
 // Following is not the best way, but to use $VWMLDBM['VWMLDBM_BATCH_UPLOAD'] to get applicaiton root.
 // Find the position of "\storage\app\batch"
-$pos = strpos($VWMLDBM['VWMLDBM_BATCH_UPLOAD'], "\\storage\\app\\batch");
+
+$MODE = "UNIX"; // UNIX: default, WINDOWS: for Windows 
+if (strpos($VWMLDBM['VWMLDBM_BATCH_UPLOAD'], '\\') !== false) {
+  $MODE = "WINDOWS";
+} 
+
+$pos = strpos($VWMLDBM['VWMLDBM_BATCH_UPLOAD'], "/storage/app/batch"); // default
+if($MODE == "WINDOWS") {
+  $pos = strpos($VWMLDBM['VWMLDBM_BATCH_UPLOAD'], "\\storage\\app\\batch");
+}
+
 $APP_ROOT = "";
 if ($pos !== false) {
     $APP_ROOT = substr($VWMLDBM['VWMLDBM_BATCH_UPLOAD'], 0, $pos);
@@ -38,7 +48,12 @@ if ($pos !== false) {
 // to get mindbridger's root. eg, /var/www/html/mindbridger or C:\xampp\htdocs\mindbridger
 // Following is not the best way, but to use $VWMLDBM['VWMLDBM_RT'] to get applicaiton root.
 // Find the position of "\vwmldbm"
-$pos2 = strpos($VWMLDBM['VWMLDBM_RT'], "\\vwmldbm");
+
+$pos2 = strpos($VWMLDBM['VWMLDBM_RT'], "/vwmldbm"); // dfault
+if($MODE == "WINDOWS") {
+  $pos2 = strpos($VWMLDBM['VWMLDBM_RT'], "\\vwmldbm");
+}
+
 $APP_ROOT2 = "";
 if ($pos2 !== false) {
     $APP_ROOT2 = substr($VWMLDBM['VWMLDBM_RT'], 0, $pos2);
