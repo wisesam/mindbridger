@@ -22,49 +22,7 @@ if(empty($rid) || empty($rfname)) { // illegal access
   session_destroy(); die("<center>Illegal access</center>");
 }
 
-require_once("../../../vwmldbm/dbcon.php");
-
-// to get mindbridger-main's root. eg, /var/www/mindbridger-main or C:\xampp\mindbridger-main
-// Following is not the best way, but to use $VWMLDBM['VWMLDBM_BATCH_UPLOAD'] to get applicaiton root.
-// Find the position of "\storage\app\batch"
-
-$MODE = "UNIX"; // UNIX: default, WINDOWS: for Windows 
-if (strpos($VWMLDBM['VWMLDBM_RT'], '\\') !== false) {
-  $MODE = "WINDOWS";
-} 
-
-
-$pos = strpos($VWMLDBM['VWMLDBM_BATCH_UPLOAD'], "/storage/app/batch"); // default
-if($MODE == "WINDOWS") {
-  $pos = strpos($VWMLDBM['VWMLDBM_BATCH_UPLOAD'], "\\storage\\app\\batch");
-}
-echo $VWMLDBM['VWMLDBM_BATCH_UPLOAD'];
-echo $pos;
-$APP_ROOT = "";
-if ($pos !== false) {
-    $APP_ROOT = substr($VWMLDBM['VWMLDBM_BATCH_UPLOAD'], 0, $pos);
-} else {
-    die("<center>Access Error. Sorry :( </center>");
-}
-
-// to get mindbridger's root. eg, /var/www/html/mindbridger or C:\xampp\htdocs\mindbridger
-// Following is not the best way, but to use $VWMLDBM['VWMLDBM_RT'] to get applicaiton root.
-// Find the position of "\vwmldbm"
-
-$pos2 = strpos($VWMLDBM['VWMLDBM_RT'], "/vwmldbm"); // dfault
-if($MODE == "WINDOWS") {
-  $pos2 = strpos($VWMLDBM['VWMLDBM_RT'], "\\vwmldbm");
-}
-
-$APP_ROOT2 = "";
-if ($pos2 !== false) {
-    $APP_ROOT2 = substr($VWMLDBM['VWMLDBM_RT'], 0, $pos2);
-} else {
-    die("<center>Access Error. Sorry :( </center>");
-}
-
-$_SESSION['app.root'] = $APP_ROOT;
-$_SESSION['app.root2'] = $APP_ROOT2;
+require_once("{$_SESSION['app.root2']}/vwmldbm/dbcon.php");
 require_once("{$_SESSION['app.root']}/app/Libraries/code.php");
 require_once("{$_SESSION['app.root']}/app/Libraries/book.php");
 
@@ -77,25 +35,12 @@ if($rid && $rfname) {
 	if($book->rdonly_pdf_yn=='Y') $RD_ONLY=true; 
 	if($book->hide_from_guest_yn != 'Y') $GUEST_VIEW=true; 
 
-	$pdfurl=getBaseUrl().'/'.explode('/', trim($VWMLDBM['VWMLDBM_WWW_RT'], '/'))[0]."/lib/get_book_file.php?rf=$rfname&rid=$rid&start=$start&end=$end";
-  $_SESSION['lib_inst'] = $book->inst;
+	$pdfurl = "{$_SESSION['app.url']}/lib/get_book_file.php?rf=$rfname&rid=$rid&start=$start&end=$end";
 }
 
 if($GUEST_VIEW==false && empty($_SESSION['uid'])) { // illegal access
   session_destroy(); die("<center>Please log in</center>");
 }
-
-function getBaseUrl() {
-  // Detect protocol (HTTP or HTTPS)
-  $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' 
-               || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
-
-  // Host name (e.g. localhost or example.com)
-  $host = $_SERVER['HTTP_HOST'];
-
-  return $protocol . $host;
-}
-
 
 
 ?>
