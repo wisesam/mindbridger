@@ -1,0 +1,1 @@
+../../mindbridger-main/public/js
