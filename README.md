@@ -33,7 +33,10 @@
      - VirtualHost 설정 확인/추가 (예: /etc/httpd/httpd.conf)  
      - .htaccess 확인 (mindbridger/ 및 mindbridger-main/public 둘 다 확인 필요)  
 
-## 다국어 사용 방법  
+### main 리포 연동하기 (중요)
+   - 만약 설시하는 폴더명이 mindbridger-main이 아니라면 mindbridger(또는 해당 이름)/index.php 에서 mindbridger-main을 해당 이름으로 바꿔줘야함
+
+## 다국어 사용 방법 (선택) 
  A. 다국어 변경 리스트 박스를 사용하려면:
   1. 호스트 스크립트에서 VWMLDBM "config.php"를 include  
      예: 호스트 스크립트가 "/htdocs/mindbridger/customer/index.php" 이고  
@@ -96,8 +99,11 @@ C. 다국어 텍스트(필드명이 아님)를 사용하려면:
    - if the RESTful routing is not working (eg, http://localhost/mindbridger/login => Not Found ),
      - check(add) VirtualHost setting (eg, /etc/httpd/httpd.conf)
      - check .htaccess (in both mindbridger/ and mindbridger-main/public)  
-  
-## How to use Multi-lang  
+
+### Integration with th main repositary  (important)
+   - If your installing folder is not mindbridger-main, then update mindbridger(or the name of your choice)/index.php to replace mindbridger-main with the proper name.
+     
+## How to use Multi-lang (Optional) 
  A. To use multi-lang change list box,
   1. include VWMLDBM "config.php" from the host script. 
 	eg, suppose the host script is "/htdocs/mindbridger/customer/index.php"
