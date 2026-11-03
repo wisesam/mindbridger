@@ -1,1 +1,1 @@
-../../mindbridger-main/public/js
+../../../mindbridger-main/public/js
