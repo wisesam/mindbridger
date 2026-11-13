@@ -1,5 +1,6 @@
 <?php
 
+$mindbridger_main_path = 'mindbridger-main';
 /**
  * Laravel - A PHP Framework For Web Artisans
  *
@@ -38,11 +39,12 @@ define('LARAVEL_START', microtime(true));
 |
 */
 
+
 try{
-	require __DIR__.'/../../mindbridger-main/vendor/autoload.php';
+	require __DIR__.'/../../'.$mindbridger_main_path.'/vendor/autoload.php';
 } catch (Throwable $e) {
 	// Handle the exception if the autoload file is not found
-	require __DIR__.'/../../../mindbridger-main/vendor/autoload.php';
+	require __DIR__.'/../../../'.$mindbridger_main_path.'/vendor/autoload.php';
 }
 
 /*
@@ -59,10 +61,10 @@ try{
 
 $app = null; 
 try{
-	require __DIR__.'/../../mindbridger-main/bootstrap/app.php';
+	require __DIR__.'/../../'.$mindbridger_main_path.'/bootstrap/app.php';
 } catch (Throwable $e) {
 	// Handle the exception if the autoload file is not found
-	require __DIR__.'/../../../mindbridger-main/bootstrap/app.php';
+	require __DIR__.'/../../../'.$mindbridger_main_path.'/bootstrap/app.php';
 }
 
 
