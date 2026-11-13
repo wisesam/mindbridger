@@ -37,15 +37,18 @@
    - 만약 설시하는 폴더명이 mindbridger-main이 아니라면 mindbridger(또는 해당 이름)/index.php 에서 mindbridger-main을 해당 이름으로 바꿔줘야함
 
 ### 심볼릭 링크 만들기 (중요)
+  ```bash
    - Linux (Bash): 
-   	- ln -s ../../mindbridger-main/public/css css
-	- ln -s ../../mindbridger-main/public/image image
-	- ln -s ../../mindbridger-main/public/js js
+   		- ln -s ../../mindbridger-main/public/css css
+		- ln -s ../../mindbridger-main/public/image image
+		- ln -s ../../mindbridger-main/public/js js
+  ```
+  ```cmd
    - Windows (CMD): 
-    - mklink /D css ..\..\mindbridger-main\public\css
-	- mklink /D image ..\..\mindbridger-main\public\image
-	- mklink /D js ..\..\mindbridger-main\public\js
-
+    	- mklink /D css ..\..\mindbridger-main\public\css
+		- mklink /D image ..\..\mindbridger-main\public\image
+		- mklink /D js ..\..\mindbridger-main\public\js
+ ```
 ## 다국어 사용 방법 (선택) 
  A. 다국어 변경 리스트 박스를 사용하려면:
   1. 호스트 스크립트에서 VWMLDBM "config.php"를 include  
@@ -112,7 +115,23 @@ C. 다국어 텍스트(필드명이 아님)를 사용하려면:
 
 ### Integration with th main repositary  (important)
    - If your installing folder is not mindbridger-main, then update mindbridger(or the name of your choice)/index.php to replace mindbridger-main with the proper name.
-     
+
+### Creating Symbolic Links (Important)
+
+- **Linux (Bash):**
+  ```bash
+  ln -s ../../mindbridger-main/public/css css
+  ln -s ../../mindbridger-main/public/image image
+  ln -s ../../mindbridger-main/public/js js
+  ```
+
+- **Windows (CMD):**
+  ```cmd
+  mklink /D css ..\..\mindbridger-main\public\css
+  mklink /D image ..\..\mindbridger-main\public\image
+  mklink /D js ..\..\mindbridger-main\public\js
+  ```
+  
 ## How to use Multi-lang (Optional) 
  A. To use multi-lang change list box,
   1. include VWMLDBM "config.php" from the host script. 
