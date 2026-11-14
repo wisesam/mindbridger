@@ -39,15 +39,17 @@
 ### 심볼릭 링크 만들기 (중요)
   ```bash
    - Linux (Bash): 
-   		- ln -s ../../mindbridger-main/public/css css
+   	- ln -s ../../mindbridger-main/public/css css
 		- ln -s ../../mindbridger-main/public/image image
 		- ln -s ../../mindbridger-main/public/js js
+    - ln -s ../../mindbridger-main/storage/app/public storage
   ```
   ```cmd
    - Windows (CMD): 
-    	- mklink /D css ..\..\mindbridger-main\public\css
+    - mklink /D css ..\..\mindbridger-main\public\css
 		- mklink /D image ..\..\mindbridger-main\public\image
 		- mklink /D js ..\..\mindbridger-main\public\js
+    - mklink /D storage ..\..\mindbridger-main\storage\app\public
  ```
 ## 다국어 사용 방법 (선택) 
  A. 다국어 변경 리스트 박스를 사용하려면:
